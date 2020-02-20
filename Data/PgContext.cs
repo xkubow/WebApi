@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Data
 {
-    class PgContext : PgDbContext
+    public class PgContext : PgDbContext
     {
     }
 }
