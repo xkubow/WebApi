@@ -18,9 +18,9 @@ namespace WebApplication1.Controllers
         };
 
         private readonly ILogger<WeatherForecastController> _logger;
-        private readonly postgresContext _context;
+        private readonly PgDbContext _context;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger, postgresContext context)
+        public WeatherForecastController(ILogger<WeatherForecastController> logger, PgDbContext context)
         {
             _logger = logger;
             _context = context;

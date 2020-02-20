@@ -4,13 +4,13 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace Data
 {
-    public partial class postgresContext : DbContext
+    public partial class PgDbContext : DbContext
     {
-        public postgresContext()
+        public PgDbContext()
         {
         }
 
-        public postgresContext(DbContextOptions<postgresContext> options)
+        public PgDbContext(DbContextOptions<PgDbContext> options)
             : base(options)
         {
         }
