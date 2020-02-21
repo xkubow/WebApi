@@ -2,15 +2,15 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace Data
+namespace WebApi
 {
-    public partial class PgDbContext : DbContext
+    public partial class TestDbContext : DbContext
     {
-        public PgDbContext()
+        public TestDbContext()
         {
         }
 
-        public PgDbContext(DbContextOptions<PgDbContext> options)
+        public TestDbContext(DbContextOptions<DbContext> options)
             : base(options)
         {
         }
@@ -22,7 +22,7 @@ namespace Data
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseNpgsql("Host=localhost;Database=postgres;Username=postgres;Password=Gedas1234");
+                optionsBuilder.UseNpgsql("Host=10.219.61.84;Database=postgres;Username=postgres;Password=Post2020SQL");
             }
         }
 
@@ -32,11 +32,9 @@ namespace Data
 
             modelBuilder.Entity<Test>(entity =>
             {
-                entity.ToTable("TEST");
+                entity.ToTable("Test", "DMSTEST");
 
                 entity.Property(e => e.Id).ValueGeneratedNever();
-
-                entity.Property(e => e.Col).HasColumnType("char");
             });
 
             OnModelCreatingPartial(modelBuilder);

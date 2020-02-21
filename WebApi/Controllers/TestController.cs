@@ -2,35 +2,33 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace WebApplication1.Controllers
+namespace WebApi.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class WeatherForecastController : ControllerBase
+    public class TestController : ControllerBase
     {
         private static readonly string[] Summaries = new[]
         {
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
         };
 
-        private readonly ILogger<WeatherForecastController> _logger;
-        private readonly PgDbContext _context;
+        private readonly ILogger<TestController> _logger;
+        private readonly TestDbContext _context;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger, PgDbContext context)
+        public TestController(ILogger<TestController> logger, TestDbContext context)
         {
             _logger = logger;
             _context = context;
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<Test>> Get()
+        public ActionResult<Test> Get()
         {
-            List<Test> result = _context.Test.ToList();
-            return result;
+            return _context.Test.First();
         }
     }
 }
